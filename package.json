@@ -1,0 +1,78 @@
+{
+  "name": "wix-height-updater",
+  "version": "1.0.0",
+  "homepage": "",
+  "private": true,
+  "author": {
+    "name": "Eran Shabi",
+    "email": "erans@wix.com",
+    "url": ""
+  },
+  "scripts": {
+    "start": "yoshi start --entry-point=./test/mock/start-fake-server.js",
+    "build": ":",
+    "precommit": "yoshi lint",
+    "pretest": "yoshi build",
+    "test": "yoshi test",
+    "posttest": "yoshi lint",
+    "release": "yoshi release"
+  },
+  "yoshi": {
+    "entry": "./app.js"
+  },
+  "devDependencies": {
+    "express": "^4.13.4",
+    "require-reload": "^0.2.2",
+    "velocity": "^0.7.2",
+    "wix-statics-parent": "latest",
+    "husky": "^0.13.4",
+    "yoshi": "latest",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-3": "^6.5.0",
+    "babel-preset-env": "^1.5.2",
+    "chai": "^3.5.0",
+    "enzyme": "^2.3.0",
+    "express-session": "^1.14.2",
+    "jsdom-global": "^2.1.0",
+    "react-test-renderer": "^15.5.4"
+  },
+  "dependencies": {
+    "axios": "^0.15.2",
+    "i18next": "^7.2.1",
+    "i18next-xhr-backend": "^1.2.0",
+    "babel-polyfill": "^6.9.1",
+    "prop-types": "^15.5.4",
+    "react": "^15.5.0",
+    "react-dom": "^15.5.0",
+    "react-i18next": "^3.1.0",
+    "wix-axios-config": "latest"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "stage-3"
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          [
+            "env",
+            {
+              "targets": {
+                "node": "current"
+              }
+            }
+          ]
+        ]
+      },
+      "development": {
+        "presets": [
+          "env"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "extends": "wix/react"
+  }
+}
