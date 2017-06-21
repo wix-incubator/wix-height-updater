@@ -5,16 +5,29 @@
     <title>${title}</title>
     <link rel="stylesheet" href="${clientTopology.staticsBaseUrl}app#if(!${debug}).min#{end}.css">
     ${newRelicEndUserHeader}
+    <style>
+      #main {
+        height: 100px;
+      }
+    </style>
   </head>
   <body>
     <div id="visit-count">Visit count: ${visitCount}</div>
     <div id="root"></div>
+    <div id="main" data-hook="main-element"></div>
+    <script>
+      var Wix = {};
+      Wix.setHeight = (newHeight) => {
+      window.parent.Wix.setHeight(newHeight);
+      }
+    </script>
     <script>
       window.__BASEURL__ = '${basename}';
       window.__LOCALE__ = '${locale}';
       window.__STATICS_BASE_URL__ = '${clientTopology.staticsBaseUrl}';
     </script>
     <script src="${clientTopology.staticsBaseUrl}app.bundle#if(!${debug}).min#{end}.js"></script>
+
     ${newRelicEndUserFooter}
   </body>
 </html>

@@ -1,5 +1,6 @@
 import {Engine} from 'velocity';
 import requireReload from 'require-reload';
+import velocityData from './velocity.data';
 
 function loadJson(filename) {
   try {
@@ -10,7 +11,6 @@ function loadJson(filename) {
 
 export function renderVM(template, data) {
   const engine = new Engine({template});
-  const velocityData = loadJson('../../velocity.data.js');
   const velocityDataPrivate = loadJson('../../velocity.private.data.js');
   return engine.render(Object.assign({}, velocityData, velocityDataPrivate, data));
 }

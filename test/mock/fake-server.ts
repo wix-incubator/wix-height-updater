@@ -1,5 +1,5 @@
-import express from 'express';
-import session from 'express-session';
+import * as express from 'express';
+import * as session from 'express-session';
 import {renderVM} from './vm';
 
 export function start(port = 3000) {
@@ -10,6 +10,10 @@ export function start(port = 3000) {
     resave: true,
     saveUninitialized: true
   }));
+
+  app.use('/iframeContainer', (req, res) => {
+    res.send(renderVM('./src/iframeContainer.vm', {}));
+  });
 
   app.use('/', (req, res) => {
     if (!req.session.visitCount) {

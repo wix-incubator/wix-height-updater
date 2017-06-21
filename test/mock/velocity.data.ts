@@ -4,7 +4,7 @@ const experiments = {
 
 };
 
-module.exports = {
+export default {
   title: 'Wix Stack React Example Application',
   debug: true,
   experiments: JSON.stringify(experiments),

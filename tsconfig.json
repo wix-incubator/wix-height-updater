@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "target": "es5",
+    "jsx": "react",
+    "lib": ["dom", "es2016"],
+    "types": ["node", "protractor"],
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "allowJs": true
+  },
+  "include": [
+    "./src/external-types.d.ts"
+  ],
+  "files": [
+    "./src/index.ts",
+    "./src/app.tsx"
+  ]
+}
