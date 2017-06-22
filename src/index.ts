@@ -1,22 +1,22 @@
 import * as _ from 'lodash';
 
-export function listenToHeightChanges(wixSdk) {
-    let lastHeight = document.documentElement.offsetHeight;
+export function listenToHeightChanges(wixSdk, window) {
+    let lastHeight = window.document.documentElement.offsetHeight;
 
-    const updateHeight = () => wixSdk.setHeight(document.documentElement.offsetHeight);
+    const updateHeight = () => wixSdk.setHeight(window.document.documentElement.offsetHeight);
 
     const updateHeightIfChanged = () => {
-        if (window.innerHeight < lastHeight || document.documentElement.offsetHeight !== lastHeight) {
-            lastHeight = document.documentElement.offsetHeight;
+        if (window.innerHeight < lastHeight || window.document.documentElement.offsetHeight !== lastHeight) {
+            lastHeight = window.document.documentElement.offsetHeight;
             updateHeight();
         }
     };
 
     const updateHeightWithDebounce = _.debounce(updateHeightIfChanged, 100, {leading: true});
-    const observer = new MutationObserver(updateHeightWithDebounce);
+    const observer = new window.MutationObserver(updateHeightWithDebounce);
     window.addEventListener('resize', updateHeightWithDebounce);
 
-    observer.observe(document.body, {attributes: true, childList: true, characterData: true, subtree: true});
+    observer.observe(window.document.body, {attributes: true, childList: true, characterData: true, subtree: true});
     updateHeight();
     //todo: change height on sdk style params change
 }
