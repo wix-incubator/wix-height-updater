@@ -20,6 +20,14 @@
       Wix.setHeight = (newHeight) => {
       window.parent.Wix.setHeight(newHeight);
       }
+
+
+      window.add100pxBlock = () => {
+        let block = document.createElement('div');
+        block.style.height = '100px';
+        document.body.appendChild(block);
+
+      }
     </script>
     <script>
       window.__BASEURL__ = '${basename}';
