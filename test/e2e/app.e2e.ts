@@ -1,12 +1,10 @@
-import 'babel-polyfill';
+import {$, browser} from 'protractor';
 
 async function add100pxBlock() {
   browser.executeScript(() => {
     window.add100pxBlock();
   });
 }
-
-
 
 describe('React application', () => {
   describe('open page', () => {

@@ -10,9 +10,9 @@
     "jsx": "react",
     "lib": ["dom", "es2016"],
     "types": ["node", "protractor"],
+    "declaration": true,
     "noEmitHelpers": true,
-    "importHelpers": true,
-    "allowJs": true
+    "importHelpers": true
   },
   "include": [
     "./src/external-types.d.ts"

@@ -1,6 +1,6 @@
 {
   "name": "wix-height-updater",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "",
   "author": {
     "name": "Eran Shabi",
@@ -77,6 +77,10 @@
         ]
       }
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wix/wix-height-updater.git"
   },
   "eslintConfig": {
     "extends": "wix/react"
