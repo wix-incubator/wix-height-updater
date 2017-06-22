@@ -2,12 +2,16 @@
   "name": "wix-height-updater",
   "version": "1.0.0",
   "homepage": "",
-  "private": true,
   "author": {
     "name": "Eran Shabi",
     "email": "erans@wix.com",
     "url": ""
   },
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "yoshi start --entry-point=./test/mock/start-fake-server.js",
     "build": ":",
@@ -76,5 +80,8 @@
   },
   "eslintConfig": {
     "extends": "wix/react"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
