@@ -1,26 +1,17 @@
 import {$, browser} from 'protractor';
 import {describe, it} from 'selenium-webdriver/testing';
 
-async function add100pxBlock() {
+function add100pxBlock() {
     browser.executeScript(() => {
         window.frames[0].frameElement.contentWindow.add100pxBlock()
     });
 }
 
-async function changeDivsBorderTo100px() {
+function changeDivsBorderTo100px() {
     browser.executeScript(() => {
         window.frames[0].frameElement.contentWindow.changeDivsBorderTo100px();
     });
 }
-
-async function getIframeWindowHeight() {
-    browser.switchTo().frame('app-iframe');
-    const appSize = await $('html').getSize();
-    browser.switchTo().defaultContent();
-
-    return appSize.height + 'px';
-}
-
 
 async function getIframeContainerHeight() {
     return await ($('[data-hook="iframe-container"]').getCssValue('height'));
@@ -38,12 +29,16 @@ describe('React application', () => {
             await browser.get('/iframeContainer');
             await browser.sleep(1000);
             expect(await getIframeContainerHeight()).toBe(await getInnerFrameSize());
+            let lastIframeHeight = await getIframeContainerHeight();
             add100pxBlock();
             await browser.sleep(1000);
             expect(await getIframeContainerHeight()).toBe(await getInnerFrameSize());
+            expect(await getIframeContainerHeight()).not.toBe(lastIframeHeight);
+            lastIframeHeight = await getIframeContainerHeight();
             changeDivsBorderTo100px();
             await browser.sleep(1000);
             expect(await getIframeContainerHeight()).toBe(await getInnerFrameSize());
+            expect(await getIframeContainerHeight()).not.toBe(lastIframeHeight);
         });
     });
 });
