@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>${title}</title>
-    <link rel="stylesheet" href="${clientTopology.staticsBaseUrl}app#if(!${debug}).min#{end}.css">
+    <!--<link rel="stylesheet" href="${clientTopology.staticsBaseUrl}app#if(!${debug}).min#{end}.css">-->
     ${newRelicEndUserHeader}
     <style>
       #main {
@@ -18,14 +18,28 @@
     <script>
       var Wix = {};
       Wix.setHeight = (newHeight) => {
-      window.parent.Wix.setHeight(newHeight);
+        window.parent.Wix.setHeight(newHeight);
       }
 
+      Wix.Events = {
+        STYLE_PARAMS_CHANGE: 'STYLE_PARAMS_CHANGE'
+      }
+
+      var wixEventCallback;
+
+      Wix.addEventListener = (event, callback) => {
+      wixEventCallback = callback;
+      }
 
       window.add100pxBlock = () => {
         let block = document.createElement('div');
         block.style.height = '100px';
         document.body.appendChild(block);
+      }
+
+      window.changeDivsBorderTo100px = () => {
+        window.document.styleSheets[0].insertRule('div {border: 100px solid black;}');
+        wixEventCallback();
 
       }
     </script>

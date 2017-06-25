@@ -23,7 +23,8 @@
     "release": "yoshi release"
   },
   "yoshi": {
-    "entry": "./app.tsx"
+    "entry": "./app.tsx",
+    "separateCss": false
   },
   "devDependencies": {
     "babel-preset-env": "^1.5.2",

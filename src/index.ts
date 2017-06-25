@@ -3,7 +3,9 @@ import * as _ from 'lodash';
 export function listenToHeightChanges(wixSdk, window) {
     let lastHeight = window.document.documentElement.offsetHeight;
 
-    const updateHeight = () => wixSdk.setHeight(window.document.documentElement.offsetHeight);
+    const updateHeight = () => {
+        wixSdk.setHeight(window.document.documentElement.offsetHeight);
+    }
 
     const updateHeightIfChanged = () => {
         if (window.innerHeight < lastHeight || window.document.documentElement.offsetHeight !== lastHeight) {
@@ -18,5 +20,6 @@ export function listenToHeightChanges(wixSdk, window) {
 
     observer.observe(window.document.body, {attributes: true, childList: true, characterData: true, subtree: true});
     updateHeight();
-    //todo: change height on sdk style params change
+
+    window.Wix.addEventListener(wixSdk.Events.STYLE_PARAMS_CHANGE, updateHeight);
 }

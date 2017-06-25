@@ -12,7 +12,7 @@
                 document.querySelector('[data-hook="iframe-container"]').style.height = newHeight + 'px';
                 }
             </script>
-        <iframe id="app-iframe" style="display:block;width:100%;height:100%;overflow:hidden;position:absolute;"
+        <iframe id="app-iframe" name="app-iframe" style="display:block;width:100%;height:100%;overflow:hidden;position:absolute;"
         src="/"
         ></iframe>
         </div>

@@ -12,4 +12,6 @@ ReactDOM.render(
 );
 
 //window.Wix.setHeight(100);
-listenToHeightChanges(window.Wix, window);
+document.addEventListener('DOMContentLoaded', () => {
+    listenToHeightChanges(window.Wix, window);
+});
