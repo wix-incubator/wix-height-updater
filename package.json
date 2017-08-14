@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "axios": "^0.15.2",
-    "babel-polyfill": "^6.9.1",
     "i18next": "^7.2.1",
     "i18next-xhr-backend": "^1.2.0",
     "lodash": "^4.17.4",
