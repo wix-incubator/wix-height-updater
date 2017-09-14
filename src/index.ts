@@ -5,7 +5,7 @@ export function listenToHeightChanges(wixSdk, window) {
 
     const updateHeight = () => {
         wixSdk.setHeight(window.document.documentElement.offsetHeight);
-    }
+    };
 
     const updateHeightIfChanged = () => {
         if (window.innerHeight < lastHeight || window.document.documentElement.offsetHeight !== lastHeight) {

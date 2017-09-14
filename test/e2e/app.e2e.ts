@@ -3,7 +3,7 @@ import {describe, it} from 'selenium-webdriver/testing';
 
 function add100pxBlock() {
     browser.executeScript(() => {
-        window.frames[0].frameElement.contentWindow.add100pxBlock()
+        window.frames[0].frameElement.contentWindow.add100pxBlock();
     });
 }
 
@@ -19,7 +19,7 @@ async function getIframeContainerHeight() {
 
 async function getInnerFrameSize() {
     return browser.executeScript(() => {
-        return window.frames[0].frameElement.contentWindow.document.documentElement.offsetHeight + 'px'
+        return window.frames[0].frameElement.contentWindow.document.documentElement.offsetHeight + 'px';
     });
 }
 

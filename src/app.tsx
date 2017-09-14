@@ -4,7 +4,6 @@ import {I18nextProvider} from 'react-i18next';
 import App from './components/App';
 import {listenToHeightChanges} from './';
 
-
 ReactDOM.render(
     <App/>,
   document.getElementById('root')

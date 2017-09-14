@@ -6,7 +6,9 @@ function loadJson(filename) {
   try {
     const reload = requireReload(require);
     return reload(filename);
-  } catch (e) {}
+  } catch (e) {
+    //
+  }
 }
 
 export function renderVM(template, data) {
