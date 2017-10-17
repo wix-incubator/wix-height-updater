@@ -47,7 +47,7 @@
     "axios": "^0.15.2",
     "i18next": "^7.2.1",
     "i18next-xhr-backend": "^1.2.0",
-    "lodash": "^4.17.4",
+    "lodash.debounce": "^4.0.8",
     "prop-types": "^15.5.4",
     "react": "^15.5.0",
     "react-dom": "^15.5.0",

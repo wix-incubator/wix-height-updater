@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import * as debounce from 'lodash.debounce';
 
 export function listenToHeightChanges(wixSdk, window) {
     let lastHeight = window.document.documentElement.offsetHeight;
@@ -14,7 +14,7 @@ export function listenToHeightChanges(wixSdk, window) {
         }
     };
 
-    const updateHeightWithDebounce = _.debounce(updateHeightIfChanged, 100, {leading: true});
+    const updateHeightWithDebounce = debounce(updateHeightIfChanged, 100, {leading: true});
     const observer = new window.MutationObserver(updateHeightWithDebounce);
     window.addEventListener('resize', updateHeightWithDebounce);
 
