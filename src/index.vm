@@ -42,6 +42,17 @@
         wixEventCallback();
 
       }
+
+      window.add100pxBlockWithTransition = () => {
+        var block = document.createElement('div');
+        block.style.height = '0px';
+        block.style.transition = "all 0.5s";
+
+        var observer = new MutationObserver(() => (block.style.height = '100px'));
+        observer.observe(document.body, {attributes: true, childList: true, characterData: true});
+
+        document.body.appendChild(block);
+      }
     </script>
     <script>
       window.__BASEURL__ = '${basename}';

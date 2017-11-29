@@ -7,6 +7,12 @@ function add100pxBlock() {
     });
 }
 
+function add100pxBlockWithTransition() {
+  browser.executeScript(() => {
+    window.frames[0].frameElement.contentWindow.add100pxBlockWithTransition();
+  });
+}
+
 function changeDivsBorderTo100px() {
     browser.executeScript(() => {
         window.frames[0].frameElement.contentWindow.changeDivsBorderTo100px();
@@ -37,6 +43,11 @@ describe('React application', () => {
             lastIframeHeight = await getIframeContainerHeight();
             changeDivsBorderTo100px();
             await browser.sleep(1000);
+            expect(await getIframeContainerHeight()).toBe(await getInnerFrameSize());
+            expect(await getIframeContainerHeight()).not.toBe(lastIframeHeight);
+            lastIframeHeight = await getIframeContainerHeight();
+            add100pxBlockWithTransition();
+            await browser.sleep(1500);
             expect(await getIframeContainerHeight()).toBe(await getInnerFrameSize());
             expect(await getIframeContainerHeight()).not.toBe(lastIframeHeight);
         });
