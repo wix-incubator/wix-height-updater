@@ -17,6 +17,7 @@ export function listenToHeightChanges(wixSdk, window) {
     const updateHeightWithDebounce = debounce(updateHeightIfChanged, 100, {leading: true});
     const observer = new window.MutationObserver(updateHeightWithDebounce);
     window.addEventListener('resize', updateHeightWithDebounce);
+    window.addEventListener('transitionend', updateHeightIfChanged);
 
     observer.observe(window.document.body, {attributes: true, childList: true, characterData: true, subtree: true});
     updateHeight();
