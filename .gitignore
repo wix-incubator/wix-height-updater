@@ -7,3 +7,4 @@ maven
 velocity.private.data.js
 test/e2e/screenshots
 package-lock.json
+.idea
