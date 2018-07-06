@@ -1,26 +1,36 @@
 import * as debounce from 'lodash.debounce';
 
 export function listenToHeightChanges(wixSdk, window) {
-    let lastHeight = window.document.documentElement.offsetHeight;
+  let lastHeight = window.document.documentElement.offsetHeight;
 
-    const updateHeight = () => {
-        wixSdk.setHeight(window.document.documentElement.offsetHeight);
-    };
+  const updateHeight = () => {
+    wixSdk.setHeight(window.document.documentElement.offsetHeight);
+  };
 
-    const updateHeightIfChanged = () => {
-        if (window.innerHeight < lastHeight || window.document.documentElement.offsetHeight !== lastHeight) {
-            lastHeight = window.document.documentElement.offsetHeight;
-            updateHeight();
-        }
-    };
+  const updateHeightIfChanged = () => {
+    if (
+      window.innerHeight < lastHeight ||
+      window.document.documentElement.offsetHeight !== lastHeight
+    ) {
+      lastHeight = window.document.documentElement.offsetHeight;
+      updateHeight();
+    }
+  };
 
-    const updateHeightWithDebounce = debounce(updateHeightIfChanged, 100, {leading: true});
-    const observer = new window.MutationObserver(updateHeightWithDebounce);
-    window.addEventListener('resize', updateHeightWithDebounce);
-    window.addEventListener('transitionend', updateHeightIfChanged);
+  const updateHeightWithDebounce = debounce(updateHeightIfChanged, 100, {
+    leading: true,
+  });
+  const observer = new window.MutationObserver(updateHeightWithDebounce);
+  window.addEventListener('resize', updateHeightWithDebounce);
+  window.addEventListener('transitionend', updateHeightIfChanged);
 
-    observer.observe(window.document.body, {attributes: true, childList: true, characterData: true, subtree: true});
-    updateHeight();
+  observer.observe(window.document.body, {
+    attributes: true,
+    childList: true,
+    characterData: true,
+    subtree: true,
+  });
+  updateHeight();
 
-    window.Wix.addEventListener(wixSdk.Events.STYLE_PARAMS_CHANGE, updateHeight);
+  window.Wix.addEventListener(wixSdk.Events.STYLE_PARAMS_CHANGE, updateHeight);
 }

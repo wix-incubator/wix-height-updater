@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {translate} from 'react-i18next';
 import * as s from './App.scss';
 
 function App() {
@@ -8,9 +7,7 @@ function App() {
       <div className={s.header}>
         <h2>title</h2>
       </div>
-      <p className={s.intro}>
-          intro
-      </p>
+      <p className={s.intro}>intro</p>
     </div>
   );
 }

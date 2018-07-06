@@ -1,6 +1,6 @@
 {
   "extends": [
-    "tslint-config-wix"
+    "tslint-config-yoshi"
   ],
   "rules": {
     "no-invalid-this": false

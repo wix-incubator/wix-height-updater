@@ -17,7 +17,8 @@
     "build": ":",
     "precommit": "yoshi lint",
     "pretest": "yoshi build",
-    "test": "yoshi test",
+    "test": "npm run test:unit & npm run test:e2e",
+    "test:unit": "yoshi test --jest",
     "test:e2e": "yoshi test --protractor",
     "posttest": "yoshi lint",
     "release": "yoshi release"
@@ -41,53 +42,45 @@
     "typescript": "^2.4.2",
     "velocity": "^0.7.2",
     "wix-statics-parent": "latest",
-    "yoshi": "latest"
+    "yoshi": "^3.0.0",
+    "yoshi-style-dependencies": "^3.0.0",
+    "protractor": "^5.3.2",
+    "@types/jest": "^23.1.4",
+    "ts-jest": "^23.0.0",
+    "tslib": "^1.7.1"
   },
   "dependencies": {
     "axios": "^0.15.2",
     "i18next": "^7.2.1",
     "i18next-xhr-backend": "^1.2.0",
+    "identity-obj-proxy": "^3.0.0",
     "lodash.debounce": "^4.0.8",
-    "prop-types": "^15.5.4",
     "react": "^15.5.0",
     "react-dom": "^15.5.0",
     "react-i18next": "^3.1.0",
-    "tslib": "^1.7.1",
     "wix-axios-config": "latest"
-  },
-  "babel": {
-    "presets": [
-      "react",
-      "stage-3"
-    ],
-    "env": {
-      "test": {
-        "presets": [
-          [
-            "env",
-            {
-              "targets": {
-                "node": "current"
-              }
-            }
-          ]
-        ]
-      },
-      "development": {
-        "presets": [
-          "env"
-        ]
-      }
-    }
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wix/wix-height-updater.git"
   },
-  "eslintConfig": {
-    "extends": "wix/react"
-  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "jest": {
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/src/.*\\.spec\\.(ts|tsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "identity-obj-proxy",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/mock/fileMock.js"
+    },
+    "testURL": "http://localhost:5554"
   }
 }
