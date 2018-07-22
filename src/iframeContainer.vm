@@ -5,7 +5,7 @@
         <title>${title}</title>
     </head>
     <body>
-        <div data-hook="iframe-container">
+        <div data-hook="iframe-container" style="position:relative">
             <script>
                 var Wix = {};
                 Wix.setHeight = (newHeight) => {
