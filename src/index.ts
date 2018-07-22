@@ -32,5 +32,5 @@ export function listenToHeightChanges(wixSdk, window) {
   });
   updateHeight();
 
-  window.Wix.addEventListener(wixSdk.Events.STYLE_PARAMS_CHANGE, updateHeight);
+  wixSdk.addEventListener(wixSdk.Events.STYLE_PARAMS_CHANGE, updateHeight);
 }
