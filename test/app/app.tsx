@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import App from './components/App';
-import { listenToHeightChanges } from './';
+import App from './components/App/index';
+import { listenToHeightChanges } from '../../src/index';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

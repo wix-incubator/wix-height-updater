@@ -12,7 +12,7 @@ export function start(port = 3000) {
   }));
 
   app.use('/iframeContainer', (req, res) => {
-    res.send(renderVM('./src/iframeContainer.vm', {}));
+    res.send(renderVM('./test/app/iframeContainer.vm', {}));
   });
 
   app.use('/', (req, res) => {
@@ -22,7 +22,7 @@ export function start(port = 3000) {
 
     req.session.visitCount++;
 
-    res.send(renderVM('./src/index.vm', {
+    res.send(renderVM('./test/app/index.vm', {
       visitCount: req.session.visitCount
     }));
   });

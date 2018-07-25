@@ -15,10 +15,10 @@
     "importHelpers": true
   },
   "include": [
-    "./src/external-types.d.ts"
+    "./test/app/external-types.d.ts"
   ],
   "files": [
     "./src/index.ts",
-    "./src/app.tsx"
+    "./test/app/app.tsx"
   ]
 }

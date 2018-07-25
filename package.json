@@ -10,9 +10,7 @@
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "files": [
-    "dist/src/index.js",
-    "dist/src/index.d.ts",
-    "dist/src/index.map"
+    "dist/src/"
   ],
   "scripts": {
     "start": "yoshi start --entry-point=./test/mock/start-fake-server.js",
@@ -26,7 +24,7 @@
     "release": "yoshi release"
   },
   "yoshi": {
-    "entry": "./app.tsx",
+    "entry": "../test/app/app.tsx",
     "separateCss": false
   },
   "devDependencies": {
@@ -62,7 +60,7 @@
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testRegex": "/src/.*\\.spec\\.(ts|tsx)$",
+    "testRegex": "/test/app/.*\\.spec\\.(ts|tsx)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
