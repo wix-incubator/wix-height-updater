@@ -1,6 +1,10 @@
 import * as debounce from 'lodash.debounce';
 
-export function listenToHeightChanges(wixSdk, window) {
+export interface IOptions {
+  resizeOnly: boolean;
+}
+
+export function listenToHeightChanges(wixSdk, window, options: Partial<IOptions> = {}) {
   let lastHeight = window.document.documentElement.offsetHeight;
 
   const updateHeight = () => {
@@ -18,19 +22,24 @@ export function listenToHeightChanges(wixSdk, window) {
   };
 
   const updateHeightWithDebounce = debounce(updateHeightIfChanged, 100, {
-    leading: true,
+    leading: true
   });
-  const observer = new window.MutationObserver(updateHeightWithDebounce);
+
   window.addEventListener('resize', updateHeightWithDebounce);
-  window.addEventListener('transitionend', updateHeightIfChanged);
 
-  observer.observe(window.document.body, {
-    attributes: true,
-    childList: true,
-    characterData: true,
-    subtree: true,
-  });
+  if (!options.resizeOnly) {
+    window.addEventListener('transitionend', updateHeightIfChanged);
+
+    const observer = new window.MutationObserver(updateHeightWithDebounce);
+    observer.observe(window.document.body, {
+      attributes: true,
+      childList: true,
+      characterData: true,
+      subtree: true
+    });
+
+    wixSdk.addEventListener(wixSdk.Events.STYLE_PARAMS_CHANGE, updateHeight);
+  }
+
   updateHeight();
-
-  wixSdk.addEventListener(wixSdk.Events.STYLE_PARAMS_CHANGE, updateHeight);
 }

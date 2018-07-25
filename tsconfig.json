@@ -9,7 +9,7 @@
     "target": "es5",
     "jsx": "react",
     "lib": ["dom", "es2016"],
-    "types": ["node", "protractor"],
+    "types": ["node", "protractor", "jest"],
     "declaration": true,
     "noEmitHelpers": true,
     "importHelpers": true
