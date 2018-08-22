@@ -42,4 +42,9 @@ describe('listenToHeightChange', () => {
       expect(wixMock.addEventListener).not.toHaveBeenCalled();
     });
   });
+
+    it('should expose window.listenToHeightChanges', () => {
+        expect(window.listenToHeightChanges).toBeInstanceOf(Function);
+        expect(window.listenToHeightChanges.toString()).toEqual(listenToHeightChanges.toString());
+    });
 });

@@ -24,8 +24,12 @@
     "release": "yoshi release"
   },
   "yoshi": {
-    "entry": "../test/app/app.tsx",
-    "separateCss": false
+    "entry": {
+      "testApp": "../test/app/app.tsx",
+      "app": "index.ts"
+    },
+    "separateCss": false,
+    "exports": "HeightUpdater"
   },
   "devDependencies": {
     "@types/jest": "^23.1.4",

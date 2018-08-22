@@ -59,7 +59,7 @@
       window.__LOCALE__ = '${locale}';
       window.__STATICS_BASE_URL__ = '${clientTopology.staticsBaseUrl}';
     </script>
-    <script src="${clientTopology.staticsBaseUrl}app.bundle#if(!${debug}).min#{end}.js"></script>
+    <script src="${clientTopology.staticsBaseUrl}testApp.bundle#if(!${debug}).min#{end}.js"></script>
 
     ${newRelicEndUserFooter}
   </body>
