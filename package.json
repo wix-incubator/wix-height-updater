@@ -11,7 +11,7 @@
   "types": "dist/src/index.d.ts",
   "files": [
     "dist/src/",
-    "dist/src/statics/app.bundle.js"
+    "dist/statics/app.bundle.js"
   ],
   "scripts": {
     "start": "yoshi start --entry-point=./test/mock/start-fake-server.js",
