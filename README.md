@@ -15,3 +15,6 @@ import {listenToHeightChanges} from 'wix-height-updater';
 listenToHeightChanges(window.Wix, window);
 ```
 Thats it. Now you can remove all of your calls to `Wix.setHeight`.
+
+
+If you can't import the function, you can load the bundle (`https://static.parastorage.com/unpkg/wix-height-updater@1.0.137/dist/statics/app.bundle.min.js`) and call `window.listenToHeightChanges`
