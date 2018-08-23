@@ -40,6 +40,7 @@ describe('listenToHeightChange', () => {
       expect(windowMock.addEventListener).toHaveBeenCalledTimes(1);
       expect(windowMock.addEventListener).toHaveBeenNthCalledWith(1, 'resize', expect.any(Function));
       expect(wixMock.addEventListener).not.toHaveBeenCalled();
+      expect(wixMock.setHeight).not.toHaveBeenCalled();
     });
   });
 

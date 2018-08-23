@@ -39,9 +39,8 @@ export function listenToHeightChanges(wixSdk, window, options: Partial<IOptions>
     });
 
     wixSdk.addEventListener(wixSdk.Events.STYLE_PARAMS_CHANGE, updateHeight);
+    updateHeight();
   }
-
-  updateHeight();
 }
 
 (window as any).listenToHeightChanges = listenToHeightChanges;
