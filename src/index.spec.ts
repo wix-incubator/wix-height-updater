@@ -43,9 +43,4 @@ describe('listenToHeightChange', () => {
       expect(wixMock.setHeight).not.toHaveBeenCalled();
     });
   });
-
-    it('should expose window.listenToHeightChanges', () => {
-        expect(window.listenToHeightChanges).toBeInstanceOf(Function);
-        expect(window.listenToHeightChanges.toString()).toEqual(listenToHeightChanges.toString());
-    });
 });

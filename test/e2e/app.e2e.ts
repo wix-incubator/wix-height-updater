@@ -1,5 +1,6 @@
 import {$, browser} from 'protractor';
 import {describe, it} from 'selenium-webdriver/testing';
+import {delay} from 'q';
 
 function add100pxBlock() {
     browser.executeScript(() => {
@@ -65,5 +66,13 @@ describe('Wix Height Updater', () => {
         await setIframeHeight(100000);
         await browser.sleep(1000);
         expect(initialHeight).toBe(await getIframeContainerHeight());
+    });
+
+    it('should be able to access "window.HeightUpdater.listenToHeightChanges"', async () => {
+        await browser.get('/usingBundle');
+        const listenToHeightChanges = await browser.executeScript(() => {
+            return window.HeightUpdater.listenToHeightChanges.toString();
+        });
+        expect(listenToHeightChanges).toContain('function listenToHeightChanges')
     });
 });

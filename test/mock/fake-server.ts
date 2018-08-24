@@ -15,6 +15,10 @@ export function start(port = 3000) {
     res.send(renderVM('./test/app/iframeContainer.vm', {}));
   });
 
+  app.use('/usingBundle', (req, res) => {
+    res.send(renderVM('./test/app/usingBundle.vm', {}));
+  });
+
   app.use('/', (req, res) => {
     if (!req.session.visitCount) {
       req.session.visitCount = 0;

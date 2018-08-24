@@ -42,5 +42,3 @@ export function listenToHeightChanges(wixSdk, window, options: Partial<IOptions>
     updateHeight();
   }
 }
-
-(window as any).listenToHeightChanges = listenToHeightChanges;
