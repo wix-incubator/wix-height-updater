@@ -4,11 +4,20 @@ export interface IOptions {
   resizeOnly: boolean;
 }
 
+let paused = false;
+
+export function pauseHeightChanges() {
+  paused = true;
+}
+export function resumeHeightChanges() {
+    paused = false;
+}
+
 export function listenToHeightChanges(wixSdk, window, options: Partial<IOptions> = {}) {
   let lastHeight = window.document.documentElement.offsetHeight;
 
   const updateHeight = () => {
-    wixSdk.setHeight(window.document.documentElement.offsetHeight);
+    !paused && wixSdk.setHeight(window.document.documentElement.offsetHeight);
   };
 
   const updateHeightIfChanged = () => {

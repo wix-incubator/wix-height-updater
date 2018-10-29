@@ -1,6 +1,6 @@
 import {WixMock} from '../test/mocks/Wix.mock';
 import {WindowMock} from '../test/mocks/Window.mock';
-import {listenToHeightChanges} from './index';
+import {listenToHeightChanges, pauseHeightChanges, resumeHeightChanges} from './index';
 
 describe('listenToHeightChange', () => {
   let wixMock: WixMock,
@@ -28,6 +28,16 @@ describe('listenToHeightChange', () => {
     it('should set height when window resize', () => {
       windowMock.when.triggerResize();
       expect(wixMock.setHeight).toHaveBeenCalledWith(offsetHeight);
+    });
+
+    it('should pause and resume setting height when pause and resume functions are called', () => {
+        (wixMock as jest.Mocked<WixMock>).setHeight.mockReset();
+        pauseHeightChanges();
+        windowMock.when.triggerResize();
+        expect(wixMock.setHeight).not.toHaveBeenCalled();
+        resumeHeightChanges();
+        windowMock.when.triggerResize();
+        expect(wixMock.setHeight).toHaveBeenCalled();
     });
   });
 
