@@ -1,6 +1,6 @@
 import {WixMock} from '../test/mocks/Wix.mock';
 import {WindowMock} from '../test/mocks/Window.mock';
-import {listenToHeightChanges, pauseHeightChanges, resumeHeightChanges} from './index';
+import {isPaused, listenToHeightChanges, pauseHeightChanges, resumeHeightChanges} from './index';
 
 describe('listenToHeightChange', () => {
   let wixMock: WixMock,
@@ -35,9 +35,11 @@ describe('listenToHeightChange', () => {
         pauseHeightChanges();
         windowMock.when.triggerResize();
         expect(wixMock.setHeight).not.toHaveBeenCalled();
+        expect(isPaused()).toEqual(true);
         resumeHeightChanges();
         windowMock.when.triggerResize();
         expect(wixMock.setHeight).toHaveBeenCalled();
+        expect(isPaused()).toEqual(false);
     });
   });
 

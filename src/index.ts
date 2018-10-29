@@ -13,6 +13,10 @@ export function resumeHeightChanges() {
     paused = false;
 }
 
+export function isPaused() {
+    return paused;
+}
+
 export function listenToHeightChanges(wixSdk, window, options: Partial<IOptions> = {}) {
   let lastHeight = window.document.documentElement.offsetHeight;
 

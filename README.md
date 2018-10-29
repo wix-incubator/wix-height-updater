@@ -22,4 +22,4 @@ If you can't import the function, you can load the bundle (`https://static.paras
 #### Adittional features
 You can pause and resume the height updater, useful for cases when you want to control the iframe's height manually temporarily.
 
-Simply import and call `pauseHeightChanges()` and `resumeHeightChanges()`.
+Simply import and call `pauseHeightChanges()` and `resumeHeightChanges()`. `isPaused()` is also available.
