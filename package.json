@@ -18,7 +18,7 @@
     "build": ":",
     "precommit": "yoshi lint",
     "pretest": "yoshi build",
-    "test": "npm run test:unit & npm run test:e2e",
+    "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "yoshi test --jest",
     "test:e2e": "yoshi test --protractor",
     "posttest": "yoshi lint",
