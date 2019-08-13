@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "start": "yoshi start --entry-point=./test/mock/start-fake-server.js",
-    "build": ":",
+    "build": "yoshi build",
     "precommit": "yoshi lint",
     "pretest": "yoshi build",
     "test": "npm run test:unit && npm run test:e2e",
