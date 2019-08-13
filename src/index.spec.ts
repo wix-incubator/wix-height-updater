@@ -44,15 +44,26 @@ describe('listenToHeightChange', () => {
   });
 
   describe('with options', () => {
-    beforeEach(() => {
-      listenToHeightChanges(wixMock, windowMock, {resizeOnly: true});
-    });
-
     it('should listen only on resize event', () => {
+      listenToHeightChanges(wixMock, windowMock, {resizeOnly: true});
+
       expect(windowMock.addEventListener).toHaveBeenCalledTimes(1);
       expect(windowMock.addEventListener).toHaveBeenNthCalledWith(1, 'resize', expect.any(Function));
       expect(wixMock.addEventListener).not.toHaveBeenCalled();
       expect(wixMock.setHeight).not.toHaveBeenCalled();
+    });
+
+    it('should clamp to min height', () => {
+      listenToHeightChanges(wixMock, windowMock, {minHeight: 300});
+
+      expect(wixMock.setHeight).toHaveBeenCalledWith(300);
+    });
+
+    it('should clamp to max height', () => {
+      windowMock.given.offsetHeight(offsetHeight = 1000);
+      listenToHeightChanges(wixMock, windowMock, {maxHeight: 500})
+
+      expect(wixMock.setHeight).toHaveBeenCalledWith(500);
     });
   });
 });

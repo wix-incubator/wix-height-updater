@@ -2,6 +2,8 @@ import * as debounce from 'lodash.debounce';
 
 export interface IOptions {
   resizeOnly: boolean;
+  minHeight?: number;
+  maxHeight?: number;
 }
 
 let paused = false;
@@ -10,18 +12,28 @@ export function pauseHeightChanges() {
   paused = true;
 }
 export function resumeHeightChanges() {
-    paused = false;
+  paused = false;
 }
 
 export function isPaused() {
-    return paused;
+  return paused;
+}
+
+export function clamp(value: number, min: number = 0, max: number = Infinity) {
+  return Math.min(Math.max(value, min), max);
 }
 
 export function listenToHeightChanges(wixSdk, window, options: Partial<IOptions> = {}) {
   let lastHeight = window.document.documentElement.offsetHeight;
 
   const updateHeight = () => {
-    !paused && wixSdk.setHeight(window.document.documentElement.offsetHeight);
+    const height = clamp(
+      window.document.documentElement.offsetHeight,
+      options.minHeight,
+      options.maxHeight
+    );
+
+    !paused && wixSdk.setHeight(height);
   };
 
   const updateHeightIfChanged = () => {
