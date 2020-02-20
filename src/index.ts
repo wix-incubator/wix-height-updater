@@ -1,4 +1,4 @@
-import * as debounce from 'lodash.debounce';
+import * as debounce from "lodash.debounce";
 
 export interface IOptions {
   resizeOnly: boolean;
@@ -23,8 +23,13 @@ export function clamp(value: number, min: number = 0, max: number = Infinity) {
   return Math.min(Math.max(value, min), max);
 }
 
-export function listenToHeightChanges(wixSdk, window, options: Partial<IOptions> = {}) {
+export function listenToHeightChanges(
+  wixSdk,
+  window,
+  options: Partial<IOptions> = {}
+) {
   let lastHeight = window.document.documentElement.offsetHeight;
+  let firstRender = true;
 
   const updateHeight = () => {
     const height = clamp(
@@ -33,7 +38,12 @@ export function listenToHeightChanges(wixSdk, window, options: Partial<IOptions>
       options.maxHeight
     );
 
-    !paused && wixSdk.setHeight(height);
+    const shouldSkipResize =
+      window.document.body.offsetHeight === 0 && firstRender;
+    if (!shouldSkipResize && !paused) {
+      firstRender = false;
+      wixSdk.setHeight(height);
+    }
   };
 
   const updateHeightIfChanged = () => {
@@ -50,10 +60,10 @@ export function listenToHeightChanges(wixSdk, window, options: Partial<IOptions>
     leading: true
   });
 
-  window.addEventListener('resize', updateHeightWithDebounce);
+  window.addEventListener("resize", updateHeightWithDebounce);
 
   if (!options.resizeOnly) {
-    window.addEventListener('transitionend', updateHeightIfChanged);
+    window.addEventListener("transitionend", updateHeightIfChanged);
 
     const observer = new window.MutationObserver(updateHeightWithDebounce);
     observer.observe(window.document.body, {
