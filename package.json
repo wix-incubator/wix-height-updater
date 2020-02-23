@@ -1,11 +1,10 @@
 {
   "name": "wix-height-updater",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "homepage": "",
   "author": {
     "name": "Eran Shabi",
-    "email": "erans@wix.com",
-    "url": ""
+    "email": "erans@wix.com"
   },
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -21,8 +20,7 @@
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "yoshi test --jest",
     "test:e2e": "yoshi test --protractor",
-    "posttest": "yoshi lint",
-    "release": "yoshi release"
+    "posttest": "yoshi lint"
   },
   "yoshi": {
     "entry": {
