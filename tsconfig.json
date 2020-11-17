@@ -12,7 +12,8 @@
     "types": ["node", "protractor", "jest"],
     "declaration": true,
     "noEmitHelpers": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "skipLibCheck": true
   },
   "include": [
     "./test/app/external-types.d.ts"
